@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+ <listaMensajes>
+  <Mensaje nombre="mensaje 1">
+   <sistemaDrones>Sistema 1</sistemaDrones>
+    <instrucciones>
+     <instruccion dron="dronX">1</instruccion>
+     <instruccion dron="dronX">2</instruccion>
+     <instruccion dron="dronX">1</instruccion>          
+    </instrucciones>
+  </Mensaje>
+  <Mensaje nombre="mensaje 2">
+   <sistemaDrones>Sistema 21</sistemaDrones>
+    <instrucciones>
+     <instruccion dron="dronX">1</instruccion>
+     <instruccion dron="dronX">2</instruccion>
+     <instruccion dron="dronX">3</instruccion>          
+    </instrucciones>
+  </Mensaje>  
+ </listaMensajes>
+</config>

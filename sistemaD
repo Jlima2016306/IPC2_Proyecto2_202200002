@@ -1,0 +1,51 @@
+// Tabla de Instrucciones
+digraph {
+	"1
+
+Subir
+
+Subir
+
+Subir
+" [fontsize=10 shape=rectangle]
+	"2
+
+prender Luz
+
+Subir
+
+esperar
+" [fontsize=10 shape=rectangle]
+	"3
+
+esperar
+
+prender Luz
+
+esperar
+" [fontsize=10 shape=rectangle]
+	"4
+
+esperar
+
+Bajar
+
+prender Luz
+" [fontsize=10 shape=rectangle]
+	"5
+
+esperar
+
+Bajar
+
+esperar
+" [fontsize=10 shape=rectangle]
+	"6
+
+esperar
+
+prender Luz
+
+esperar
+" [fontsize=10 shape=rectangle]
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+ <listaSistemasDrones>
+  <sistemaDrones nombre="Sistema 1">
+   <alturaMaxima>4</alturaMaxima>
+   <cantidadDrones>2</cantidadDrones>
+   <contenido>
+    <dron> dronX </dron>
+    <alturas>
+     <altura valor="1"> A </altura>
+     <altura valor="2"> N </altura>
+     <altura valor="3"> O </altura>
+     <altura valor="4"> M </altura>               
+    </alturas>
+   </contenido>
+   <contenido>
+    <dron> dronY </dron>
+    <alturas>
+     <altura valor="1"> E </altura>
+     <altura valor="2"> P </altura>
+     <altura valor="3"> C </altura>
+     <altura valor="4"> 2 </altura>               
+    </alturas>
+   </contenido>
+  </sistemaDrones>
+  <sistemaDrones nombre="Sistema 21">
+   <alturaMaxima>4</alturaMaxima>
+   <cantidadDrones>2</cantidadDrones>
+   <contenido>
+    <dron> dron2X </dron>
+    <alturas>
+     <altura valor="1"> 2A </altura>
+     <altura valor="2"> 2N </altura>
+     <altura valor="3"> 2O </altura>
+     <altura valor="4"> 2M </altura>               
+    </alturas>
+   </contenido>
+   <contenido>
+    <dron> dron2Y </dron>
+    <alturas>
+     <altura valor="1"> H </altura>
+     <altura valor="2"> P </altura>
+     <altura valor="3"> C </altura>
+     <altura valor="4"> 2 </altura>               
+    </alturas>
+   </contenido>
+  </sistemaDrones>  
+ </listaSistemasDrones>
+</config>

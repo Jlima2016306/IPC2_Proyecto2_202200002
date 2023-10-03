@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+ <listaDrones>
+  <dron> dronY </dron>
+  <dron> dronX </dron>
+  <dron> dron2X </dron>
+  <dron> dron2Y </dron>  
+ </listaDrones>
+</config>

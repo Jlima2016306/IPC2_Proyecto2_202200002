@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<config>
+ <listaDrones>
+  <dron>dronX</dron>
+  <dron>dronY</dron>
+  <dron>dron2X</dron>
+  <dron>dron2Y</dron>  
+ </listaDrones>
+ <listaSistemasDrones>
+  <sistemaDrones nombre="Sistema 1">
+   <alturaMaxima>4</alturaMaxima>
+   <cantidadDrones>2</cantidadDrones>
+   <contenido>
+    <dron>dronX</dron>
+    <alturas>
+     <altura valor="1">A</altura>
+     <altura valor="2">N</altura>
+     <altura valor="3">O</altura>
+     <altura valor="4">M</altura>               
+    </alturas>
+   </contenido>
+   <contenido>
+    <dron>dronY</dron>
+    <alturas>
+     <altura valor="1">E</altura>
+     <altura valor="2">P</altura>
+     <altura valor="3">C</altura>
+     <altura valor="4">2</altura>               
+    </alturas>
+   </contenido>
+  </sistemaDrones>
+  <sistemaDrones nombre="Sistema 21">
+   <alturaMaxima>4</alturaMaxima>
+   <cantidadDrones>2</cantidadDrones>
+   <contenido>
+    <dron>dron2X</dron>
+    <alturas>
+     <altura valor="1">2A</altura>
+     <altura valor="2">2N</altura>
+     <altura valor="3">2O</altura>
+     <altura valor="4">2M</altura>               
+    </alturas>
+   </contenido>
+   <contenido>
+    <dron>dron2Y</dron>
+    <alturas>
+     <altura valor="1">E</altura>
+     <altura valor="2">P</altura>
+     <altura valor="3">C</altura>
+     <altura valor="4">2</altura>               
+    </alturas>
+   </contenido>
+  </sistemaDrones>  
+ </listaSistemasDrones>
+ <listaMensajes>
+  <Mensaje nombre="mensaje 1">
+   <sistemaDrones>Sistema 1</sistemaDrones>
+    <instrucciones>
+     <instruccion dron="dronX">1</instruccion>
+     <instruccion dron="dronY">2</instruccion>
+     <instruccion dron="dronX">1</instruccion>    
+     <instruccion dron="dronY">4</instruccion>           
+    </instrucciones>
+  </Mensaje>
+  <Mensaje nombre="mensaje 2">
+   <sistemaDrones>Sistema 1</sistemaDrones>
+    <instrucciones>
+     <instruccion dron="dronX">1</instruccion>
+     <instruccion dron="dronX">2</instruccion>
+     <instruccion dron="dronX">3</instruccion>          
+    </instrucciones>
+  </Mensaje>  
+ </listaMensajes>
+</config>
