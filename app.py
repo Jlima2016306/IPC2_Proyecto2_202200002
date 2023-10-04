@@ -98,7 +98,6 @@ class TextEditorApp:
         self.file_Dron.add_command(label="Agregar", command=self.agregar_DronActivacionSecretaMortalAlienigena)
         
         self.file_Men.add_command(label="Ver Mensajes", command=self.mostrar_tablaMensaje)
-        self.file_Men.add_command(label="Ver instrucciones para enviar un mensaje", command=self.open_file)        
 
     def open_file(self):
         
@@ -404,7 +403,9 @@ class TextEditorApp:
                 hacer_algo(nombre)
             else:
                 print("Ningún elemento seleccionado")
+
         for mensaje in self.mensaJeTemp:
+            print(mensaje.Mensaje.nombre)
             valores = [mensaje.Mensaje.nombre, mensaje.Mensaje.sistemaDrones]
             tree.insert("", "end", values=valores)
 
@@ -419,9 +420,7 @@ class TextEditorApp:
                 hacer_algo2(nombre)
             else:
                 print("Ningún elemento seleccionado")
-        for mensaje in self.mensaJeTemp:
-            valores = [mensaje.Mensaje.nombre, mensaje.Mensaje.sistemaDrones]
-            tree.insert("", "end", values=valores)
+
 
         # Empacar el Treeview
 
@@ -618,7 +617,7 @@ class TextEditorApp:
             texto += "Introducción a la Programación y Computación 2 sección D \n"
             texto += "Ingenieria en Ciencias y Sistemas \n"
             texto += "4to semestre \n"
-            texto += "Documentacion Link : https://github.com/Jlima2016306/IPC2_Proyecto2_202200002 \n"
+            texto += "Documentacion Link : https://github.com/Jlima2016306/IPC2_Proyecto2_202200002/blob/main/Documentaci%C3%B3n.pdf \n"
             ventana_emergente = tk.Toplevel(root)
             ventana_emergente.title("Ayuda")
             etiqueta = tk.Label(ventana_emergente, text=texto)

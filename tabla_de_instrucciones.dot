@@ -2,8 +2,6 @@
 digraph {
 	"0
 
-DronW
-
 DronX
 
 DronY
@@ -12,27 +10,21 @@ DronZ
 " [fontsize=10 shape=rectangle]
 	"1
 
-prender Luz
+Subir
 
-esperar
+Subir
 
-esperar
-
-esperar
+Subir
 " [fontsize=10 shape=rectangle]
 	"2
 
-esperar
-
 prender Luz
 
-esperar
+Subir
 
 esperar
 " [fontsize=10 shape=rectangle]
 	"3
-
-esperar
 
 esperar
 
@@ -44,10 +36,24 @@ esperar
 
 esperar
 
+Bajar
+
+prender Luz
+" [fontsize=10 shape=rectangle]
+	"5
+
 esperar
+
+Bajar
+
+esperar
+" [fontsize=10 shape=rectangle]
+	"6
 
 esperar
 
 prender Luz
+
+esperar
 " [fontsize=10 shape=rectangle]
 }
