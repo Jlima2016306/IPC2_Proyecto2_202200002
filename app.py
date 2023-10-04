@@ -396,7 +396,7 @@ class TextEditorApp:
             
 
 
-        # Acción al hacerdd clic en una celda de la columna 3
+        # Acción al hacerddf clic en una celda de la columna 3
             item = tree.selection()
             if item:
                 nombre = tree.item(item, "values")[0]
