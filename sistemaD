@@ -1,3 +1,29 @@
 // Grafo de SistemaD
 digraph {
+	"Sistema 1" [shape=box]
+	"Sistema 1_dronX" [shape=ellipse]
+	"Sistema 1" -> "Sistema 1_dronX"
+	"Sistema 1_dronX" -> "Sistema 1_dronX_('A', '=', '1')"
+	"Sistema 1_dronX_('A', '=', '1')" -> "Sistema 1_dronX_('N', '=', '2')"
+	"Sistema 1_dronX_('N', '=', '2')" -> "Sistema 1_dronX_('O', '=', '3')"
+	"Sistema 1_dronX_('O', '=', '3')" -> "Sistema 1_dronX_('M', '=', '4')"
+	"Sistema 1_dronY" [shape=ellipse]
+	"Sistema 1" -> "Sistema 1_dronY"
+	"Sistema 1_dronY" -> "Sistema 1_dronY_('E', '=', '1')"
+	"Sistema 1_dronY_('E', '=', '1')" -> "Sistema 1_dronY_('P', '=', '2')"
+	"Sistema 1_dronY_('P', '=', '2')" -> "Sistema 1_dronY_('C', '=', '3')"
+	"Sistema 1_dronY_('C', '=', '3')" -> "Sistema 1_dronY_('2', '=', '4')"
+	"Sistema 21" [shape=box]
+	"Sistema 21_dron2X" [shape=ellipse]
+	"Sistema 21" -> "Sistema 21_dron2X"
+	"Sistema 21_dron2X" -> "Sistema 21_dron2X_('2A', '=', '1')"
+	"Sistema 21_dron2X_('2A', '=', '1')" -> "Sistema 21_dron2X_('2N', '=', '2')"
+	"Sistema 21_dron2X_('2N', '=', '2')" -> "Sistema 21_dron2X_('2O', '=', '3')"
+	"Sistema 21_dron2X_('2O', '=', '3')" -> "Sistema 21_dron2X_('2M', '=', '4')"
+	"Sistema 21_dron2Y" [shape=ellipse]
+	"Sistema 21" -> "Sistema 21_dron2Y"
+	"Sistema 21_dron2Y" -> "Sistema 21_dron2Y_('E', '=', '1')"
+	"Sistema 21_dron2Y_('E', '=', '1')" -> "Sistema 21_dron2Y_('P', '=', '2')"
+	"Sistema 21_dron2Y_('P', '=', '2')" -> "Sistema 21_dron2Y_('C', '=', '3')"
+	"Sistema 21_dron2Y_('C', '=', '3')" -> "Sistema 21_dron2Y_('2', '=', '4')"
 }
