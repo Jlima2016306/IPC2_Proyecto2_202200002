@@ -13,6 +13,7 @@ import os
 #clases
 from drones.clase.Drones import Drones
 from graphviz import Digraph
+import xml.dom.minidom as minidom
 
 from Sistema.clase.Alturas import Alturas
 from Sistema.clase.Contenido import Contenido
@@ -79,15 +80,16 @@ class TextEditorApp:
 
         
         self.menu_bar.add_cascade(label="Archivo", menu=self.file_menu)
-        self.menu_bar.add_cascade(label="Inicializar", menu=self.file_Init)
+        self.menu_bar.add_cascade(label="Inicializar", command=self.inicializa)
 
         self.menu_bar.add_cascade(label="Gestionar Drones", menu=self.file_Dron)
         self.menu_bar.add_cascade(label="Mensajes", menu=self.file_Men)
         self.menu_bar.add_cascade(label="Graficar Sistema de Drones", command=self.invocarMM)
+        self.menu_bar.add_cascade(label="Ayuda", command=self.datosStudiantes)
 
 
         self.file_menu.add_command(label="Abrir", command=self.open_file)
-        self.file_menu.add_command(label="Generar XML", command=self.open_file)
+        self.file_menu.add_command(label="Generar XML", command=self.xmlSale)
 
         self.file_menu.add_separator()
         self.file_menu.add_command(label="Salir", command=self.root.quit)
@@ -166,24 +168,31 @@ class TextEditorApp:
                             for dron in contenido.findall("dron"):
                               dronCont = dron.text
                               print(dronCont)  
+                            llave = False
+                            for dronesExistente in self.listaTEMPDrones:
+                                 if(dronCont == dronesExistente.Drones.nombre):
+                                      llave = True
+                                      break
+                            if(llave == True):          
+                                listAlturasTemp = listAlturas()
 
-                            listAlturasTemp = listAlturas()
+                                for altura in contenido.findall(".//altura"):    
+                                    letraValor = altura.text
+                                    metroValor = altura.get("valor")
 
-                            for altura in contenido.findall(".//altura"):    
-                                letraValor = altura.text
-                                metroValor = altura.get("valor")
+                                    nuevoAlturas = Alturas(metroValor,letraValor)
+                                    listAlturasTemp.Incertar_dato(nuevoAlturas)
+                                    print(altura.text)
 
-                                nuevoAlturas = Alturas(metroValor,letraValor)
-                                listAlturasTemp.Incertar_dato(nuevoAlturas)
-                                print(altura.text)
+                                    print("Matrices ok!")
 
-                                print("Matrices ok!")
+                                nuevoCont = Contenido(dronCont,listAlturasTemp)
 
-                            nuevoCont = Contenido(dronCont,listAlturasTemp)
+                                listContenidoTemp.Incertar_dato(nuevoCont)
+                            else:
+                                 print("El dron: ",dronCont," no existe en el listado de drones")
 
-                            listContenidoTemp.Incertar_dato(nuevoCont)
-
-
+                    
                     nuevoSD= Sistema_Drones(nombre,alturaMax,cantDrones,listContenidoTemp)
                     self.listSistema_DronesTemp.Incertar_dato(nuevoSD)
                     
@@ -353,7 +362,6 @@ class TextEditorApp:
             print("Nombre:",nombre)
             self.listaSupremaDelmensaje
             texto =""
-            self.Graficar_Mensaje(nombre)
             for ListadoDeMensajes in self.listaSupremaDelmensaje:
                  if(ListadoDeMensajes.mensajeRec.nombre == nombre):
                         
@@ -378,6 +386,11 @@ class TextEditorApp:
             boton_cerrar = tk.Button(ventana_emergente, text="Cerrar", command=ventana_emergente.destroy)
             boton_cerrar.pack()
 
+        def hacer_algo2(nombre):
+            print("Nombre:",nombre)
+
+            self.Graficar_Mensaje(nombre)
+
 
 
         def obtener_elemento_seleccionado():
@@ -395,13 +408,29 @@ class TextEditorApp:
             valores = [mensaje.Mensaje.nombre, mensaje.Mensaje.sistemaDrones]
             tree.insert("", "end", values=valores)
 
+        def obtener_elemento_seleccionado2():
+            
 
+
+        # Acción al hacer clic en una celda de la columna 3
+            item = tree.selection()
+            if item:
+                nombre = tree.item(item, "values")[0]
+                hacer_algo2(nombre)
+            else:
+                print("Ningún elemento seleccionado")
+        for mensaje in self.mensaJeTemp:
+            valores = [mensaje.Mensaje.nombre, mensaje.Mensaje.sistemaDrones]
+            tree.insert("", "end", values=valores)
 
         # Empacar el Treeview
 
         tree.pack()
         boton = tk.Button(ventana, text="Obtener Elemento Seleccionado", command=obtener_elemento_seleccionado)
+        boton2 = tk.Button(ventana, text="Graficar", command=obtener_elemento_seleccionado2)
+
         boton.pack()
+        boton2.pack()
         ventana.mainloop()
 
 
@@ -574,6 +603,31 @@ class TextEditorApp:
         dot.render('grafico_sistemaD', format='png')                               
 
 
+    def inicializa(self):
+        self.listaTEMPDrones.eliminar()
+        self.listaSupremaDelmensaje.eliminar()
+        self.listSistema_DronesTemp.eliminar()
+        self.mensaJeTemp.eliminar()
+        messagebox.showinfo("Eliminado", "App inicializado exitosamente.")
+
+    def datosStudiantes(self):
+
+            texto =""
+            texto += "Julio Samuel Isaac Lima Donis \n"
+            texto += "202200002 \n"
+            texto += "Introducción a la Programación y Computación 2 sección D \n"
+            texto += "Ingenieria en Ciencias y Sistemas \n"
+            texto += "4to semestre \n"
+            texto += "Documentacion Link : https://github.com/Jlima2016306/IPC2_Proyecto2_202200002 \n"
+            ventana_emergente = tk.Toplevel(root)
+            ventana_emergente.title("Ayuda")
+            etiqueta = tk.Label(ventana_emergente, text=texto)
+            etiqueta.pack()
+            boton_cerrar = tk.Button(ventana_emergente, text="Cerrar", command=ventana_emergente.destroy)
+            boton_cerrar.pack()
+
+
+    
 
     def generar_grafo_sistemaD(self,dot, sistemaD, parent=None):
         # Agregar el nodo actual al gráfico DOT
@@ -616,6 +670,7 @@ class TextEditorApp:
 
         # Renderizar el gráfico en un archivo PNG
         dot.render('sistemaD', format='png')
+        messagebox.showinfo("Guardado", "Archivo de Sistema de drones guardado exitosamente.")
 
     def Graficar_Mensaje(self, nombre):
             dot = Digraph(comment="Tabla de Instrucciones")
@@ -644,6 +699,57 @@ class TextEditorApp:
             dot_file = "tabla_de_instrucciones.dot"
             dot.save(dot_file)
             dot.render("tabla_de_instrucciones", format="png", cleanup=True)
+            messagebox.showinfo("Guardado", "Archivo PNG de grafica guardado exitosamente.")
+
+    def xmlSale(self):
+            # Crear el elemento raíz
+            respuesta = ET.Element("respuesta")
+
+            # Crear el elemento listaMensajes
+
+
+            # Puedes agregar más tiempos, acciones de dron y mensajes si es necesario
+
+            # Crear un objeto ElementTree para escribir en un archivo
+            lista_mensajes = ET.SubElement(respuesta, "listaMensajes")
+            # Guardar el XML en un archivo
+       
+            for ListadoDeMensajes in self.listaSupremaDelmensaje:
+                
+
+                # Crear un mensaje
+                mensaje = ET.SubElement(lista_mensajes, "mensaje", nombre=ListadoDeMensajes.mensajeRec.nombre)
+
+                # Agregar elementos dentro del mensaje
+                sistema_drones = ET.SubElement(mensaje, "sistemaDrones")
+                sistema_drones.text = ListadoDeMensajes.mensajeRec.sitema_drones
+
+                tiempo_optimo = ET.SubElement(mensaje, "tiempoOptimo")
+                tiempo_optimo.text = str(ListadoDeMensajes.mensajeRec.tiempo)
+
+                mensaje_recibido = ET.SubElement(mensaje, "mensajeRecibido")
+                mensaje_recibido.text = ListadoDeMensajes.mensajeRec.mensaje
+
+                instrucciones = ET.SubElement(mensaje, "instrucciones")
+
+                # Agregar tiempo y acciones dentro de instrucciones
+
+
+                for instruc in ListadoDeMensajes.mensajeRec.lista_instrucciones2:
+                    tiempo = ET.SubElement(instrucciones, "tiempo", valor=str(instruc.instrucciones2.tiempo))
+                    acciones = ET.SubElement(tiempo, "acciones")
+
+                    for acciones2 in instruc.instrucciones2.lista_acciones: 
+                                
+
+                                dron = ET.SubElement(acciones, "dron", nombre=acciones2.Accion.dron)
+                                dron.text = acciones2.Accion.accion
+            tree = ET.ElementTree(respuesta)
+            xmlstr = minidom.parseString(ET.tostring(respuesta)).toprettyxml(indent="    ")  # Especifica el número de espacios para la indentación
+
+            with open("archivo.xml", "w", encoding="utf-8") as xml_file:
+                xml_file.write(xmlstr)  
+                messagebox.showinfo("Guardado", "Archivo XML guardado exitosamente.")              
 if __name__ == "__main__":
     root = tk.Tk()
     app = TextEditorApp(root)

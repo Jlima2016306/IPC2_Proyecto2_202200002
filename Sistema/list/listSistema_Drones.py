@@ -8,6 +8,12 @@ class listSistema_Drones:
         self.contador=0
     
     def Incertar_dato(self,Sistema_Drones):
+        actual = self.primero
+        while actual != None :
+            if Sistema_Drones.nombre == actual.Sistema_Drones.nombre:
+                print ("Ya existe")
+                return 
+            actual = actual.siguiente              
         if self.primero is None:
             
             self.primero =nodosSistema_Drones(Sistema_Drones=Sistema_Drones)
@@ -59,3 +65,9 @@ class listSistema_Drones:
         while current:
             yield current
             current = current.siguiente
+
+    def eliminar(self):
+        while self.primero:
+            temp = self.primero
+            self.primero = self.primero.siguiente
+            temp.siguiente = None  

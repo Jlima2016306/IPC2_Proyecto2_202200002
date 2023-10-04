@@ -57,3 +57,9 @@ class listDrones:
         while current:
             yield current
             current = current.siguiente
+
+    def eliminar(self):
+        while self.primero:
+            temp = self.primero
+            self.primero = self.primero.siguiente
+            temp.siguiente = None  
